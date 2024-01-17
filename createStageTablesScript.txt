@@ -1,0 +1,45 @@
+CREATE TABLE NarzedzieZbrodniSt(
+	IdNarzedzieZbrodniT int NOT NULL PRIMARY KEY,
+	NazwaNarzedzia varchar(255) NOT NULL
+)
+GO
+
+CREATE TABLE TypWykroczeniaSt(
+	IdTypWykroczeniaT int NOT NULL PRIMARY KEY,
+	WskaznikWykroczeniaT int NOT NULL,
+	NazwaWykroczenia varchar(255) NOT NULL
+)
+GO
+
+CREATE TABLE LokalizacjaSt(
+	IdLokalizacjaT int NOT NULL PRIMARY KEY,
+	KodObszaru int NOT NULL,
+	NazwaObszaru varchar(255) NOT NULL,
+	KodDzielnicy varchar(255) NOT NULL,
+	MiejscePrzestepstwa varchar(255) NOT NULL
+)
+GO
+
+CREATE TABLE CzasSt (
+	IdCzasT int NOT NULL PRIMARY KEY,
+	Data date NOT NULL,
+	Dzien numeric(2) NOT NULL,
+	Miesiac numeric(2) NOT NULL,
+	Rok numeric(4) NOT NULL
+)
+GO
+
+CREATE TABLE StatusDochodzeniaSt(
+	IdStatusDochodzeniaT int NOT NULL PRIMARY KEY,
+	KodStatusu varchar(255) NOT NULL,
+	Status varchar(255) NOT NULL
+)
+GO
+
+CREATE TABLE OfiaraSt(
+	IdOfiaraT int NOT NULL PRIMARY KEY,,
+	Wiek int NOT NULL,
+	Plec varchar(255) NOT NULL,
+	EtnicznePochodzenie varchar(255) NOT NULL
+)
+GO
