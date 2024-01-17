@@ -5,33 +5,33 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-IVSSQLK"
   DTS:CreatorName="DESKTOP-IVSSQLK\lolek"
-  DTS:DTSID="{4C21D21B-BA6E-472A-A49E-8C887CA77E6A}"
+  DTS:DTSID="{29C390C1-879A-4BDE-8FAF-3B2E361CB8D7}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5314.0"
   DTS:LocaleID="1045"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:VersionBuild="16"
-  DTS:VersionGUID="{8069878D-2E3F-4B45-96EC-02D9964DF929}">
+  DTS:VersionGUID="{6A2C485E-A4BB-45F4-AFBF-2E8DE6217BF5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[db-mssql.s28646]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{CFA7328F-40D1-4D4A-A02C-A2CD73E2D345}"
+      DTS:DTSID="{78E35401-50A4-4DBE-9E3D-1BF3C203FC85}"
       DTS:ObjectName="db-mssql.s28646">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=db-mssql;Initial Catalog=s28646;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{CFA7328F-40D1-4D4A-A02C-A2CD73E2D345}db-mssql.s28646;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=db-mssql;Initial Catalog=s28646;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{78E35401-50A4-4DBE-9E3D-1BF3C203FC85}db-mssql.s28646;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
       DTS:CreationName="EXCEL"
-      DTS:DTSID="{5AC65075-EACF-4E68-8665-AB916D038B7F}"
+      DTS:DTSID="{DABBEB8D-964A-4A80-8BFD-11B77B165541}"
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -47,7 +47,7 @@
       DTS:refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{9C9025A6-C830-4F62-B731-5177973E357D}"
+      DTS:DTSID="{2980AB10-C8F1-4DF3-B5AC-BCA7A5530944}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task Ładowanie NarzedzieZbrodniSt">
@@ -769,7 +769,7 @@
       DTS:refId="Package\Execute SQL Task czyszczenie tabeli narzedzie zbrodni"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{7B85CF4F-2CCD-4C83-9F31-D1E6F50960A9}"
+      DTS:DTSID="{D7CA136E-3E30-4BB3-BDE6-7EEF12137367}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute SQL Task czyszczenie tabeli narzedzie zbrodni"
@@ -778,7 +778,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{CFA7328F-40D1-4D4A-A02C-A2CD73E2D345}"
+          SQLTask:Connection="{78E35401-50A4-4DBE-9E3D-1BF3C203FC85}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE NarzedzieZbrodniSt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -787,7 +787,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{BC26B14A-B432-4DF6-AB4A-78AF24BF8201}"
+      DTS:DTSID="{1DBA5C73-8F17-4F51-9C00-381ABF674CBB}"
       DTS:From="Package\Execute SQL Task czyszczenie tabeli narzedzie zbrodni"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
