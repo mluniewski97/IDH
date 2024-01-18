@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{C1F1FD1E-6ED3-4CCA-A52B-DF9ED1CC30F6}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{1B4901C9-D761-412C-AC35-4524E387EFB4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3195,11 +3195,11 @@
         <NodeLayout
           Size="113.454545454546,41.8909090909091"
           Id="Package\Data Flow Task fakt przestepstwa\Lookup"
-          TopLeft="790.000051992638,103.000006778787" />
+          TopLeft="797.000052453333,103.000006778787" />
         <NodeLayout
           Size="113.454545454546,41.8909090909091"
           Id="Package\Data Flow Task fakt przestepstwa\Lookup 1"
-          TopLeft="799.000052584959,182.8909144218" />
+          TopLeft="796.000052387519,185.89091461924" />
         <NodeLayout
           Size="113.454545454546,41.8909090909091"
           Id="Package\Data Flow Task fakt przestepstwa\Lookup 2"
