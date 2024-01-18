@@ -40,6 +40,5 @@ CREATE TABLE OfiaraSt(
 	IdOfiaraT int NOT NULL PRIMARY KEY,,
 	Wiek int NOT NULL,
 	Plec varchar(255) NOT NULL,
-	EtnicznePochodzenie varchar(255) NOT NULL
 )
 GO
