@@ -13,19 +13,16 @@ GO
 
 CREATE TABLE LokalizacjaSt(
 	IdLokalizacjaT int NOT NULL PRIMARY KEY,
-	KodObszaru int NOT NULL,
 	NazwaObszaru varchar(255) NOT NULL,
 	KodDzielnicy varchar(255) NOT NULL,
-	MiejscePrzestepstwa varchar(255) NOT NULL
 )
 GO
 
-CREATE TABLE CzasSt (
-	IdCzasT int NOT NULL PRIMARY KEY,
-	Data date NOT NULL,
-	Dzien numeric(2) NOT NULL,
-	Miesiac numeric(2) NOT NULL,
-	Rok numeric(4) NOT NULL
+CREATE TABLE CzasStage (
+    Data DATE PRIMARY KEY,
+    Dzien AS DATEPART(day, Data),
+    Miesiac AS DATEPART(month, Data),
+    Rok AS DATEPART(year, Data)
 )
 GO
 
@@ -35,6 +32,24 @@ CREATE TABLE StatusDochodzeniaSt(
 	Status varchar(255) NOT NULL
 )
 GO
+
+CREATE PROCEDURE WstawCzasStage
+AS
+BEGIN
+    DECLARE @DataStart DATE = '2020-01-01';
+    DECLARE @DataKoniec DATE = '2023-12-31';
+
+    -- Zakładamy, że tabela CzasStage jest pusta na początku tego procesu
+    TRUNCATE TABLE CzasStage;
+
+    WHILE @DataStart <= @DataKoniec
+    BEGIN
+        INSERT INTO CzasStage (Data)
+        VALUES (@DataStart)
+
+        SET @DataStart = DATEADD(day, 1, @DataStart)
+    END
+END
 
 CREATE TABLE OfiaraSt(
 	IdOfiaraT int NOT NULL PRIMARY KEY,,
