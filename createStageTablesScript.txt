@@ -28,7 +28,7 @@ GO
 
 CREATE TABLE TypWykroczeniaSt(
 	IdTypWykroczeniaT int NOT NULL PRIMARY KEY,
-	WskaznikWykroczeniaT int NOT NULL,
+	WskaznikWykroczenia int NOT NULL,
 	NazwaWykroczenia varchar(255) NOT NULL
 )
 GO
@@ -130,7 +130,7 @@ GO
 CREATE TABLE TypWykroczenia(
 	 IdTypWykroczenia int identity(1,1) PRIMARY KEY,
 	IdTypWykroczeniaT int NOT NULL,
-	WskaznikWykroczeniaT int NOT NULL,
+	WskaznikWykroczenia int NOT NULL,
 	NazwaWykroczenia varchar(255) NOT NULL
 )
 GO
