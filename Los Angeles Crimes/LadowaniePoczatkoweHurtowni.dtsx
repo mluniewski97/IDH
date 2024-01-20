@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-T1V0PUE\kacpe"
   DTS:DTSID="{5B531D07-3898-4379-98BF-D7EF43385CF9}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
   DTS:LocaleID="1045"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{11B68FA0-7522-49BD-88B7-B3EE62A85CFC}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{C5489AF4-CCD2-4EFC-8F52-BD7BC786014F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,18 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=db-mssql;Initial Catalog=s28646;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{9FEA1E88-038C-4772-9BFD-6A81208E4F6F}db-mssql.s28646;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[db-mssql.s29318]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BDBA4303-9ED7-4714-B2E1-5902FCEB0029}"
+      DTS:ObjectName="db-mssql.s29318">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=db-mssql;Initial Catalog=s29318;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{BDBA4303-9ED7-4714-B2E1-5902FCEB0029}db-mssql.s29318;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -115,8 +127,8 @@ where [refTable].[IdLokalizacjaT] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -273,8 +285,8 @@ where [refTable].[Data] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -431,8 +443,8 @@ where [refTable].[IdNarzedzieZbrodniT] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -589,8 +601,8 @@ where [refTable].[IdOfiaraT] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -747,8 +759,8 @@ where [refTable].[IdStatusDochodzeniaT] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -905,8 +917,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -1052,8 +1064,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1217,8 +1229,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1504,8 +1516,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task 1 ladowanie czasu\OLE DB Destination.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1625,8 +1637,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task 1 ladowanie czasu\OLE DB Source.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1818,8 +1830,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia\OLE DB Destination.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1955,8 +1967,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia\OLE DB Source.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -2142,8 +2154,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task 3 ladowanie ofiary\OLE DB Destination.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -2275,8 +2287,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task 3 ladowanie ofiary\OLE DB Source.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -2456,8 +2468,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Destination.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -2593,8 +2605,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Source.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -2780,8 +2792,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Destination.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -2903,8 +2915,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Source.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3053,7 +3065,7 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepNulls">false</property>
+                      name="FastLoadKeepNulls">true</property>
                     <property
                       dataType="System.String"
                       description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
@@ -3066,8 +3078,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3094,11 +3106,11 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                           externalMetadataColumnId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NazwaWykroczenia]"
                           lineageId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].Columns[NazwaWykroczenia]" />
                         <inputColumn
-                          refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WskaznikWykroczeniaT]"
+                          refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WskaznikWykroczenia]"
                           cachedDataType="i4"
-                          cachedName="WskaznikWykroczeniaT"
+                          cachedName="WskaznikWykroczenia"
                           externalMetadataColumnId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WskaznikWykroczenia]"
-                          lineageId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].Columns[WskaznikWykroczeniaT]" />
+                          lineageId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].Columns[WskaznikWykroczenia]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3199,8 +3211,8 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                      connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                      connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3219,15 +3231,6 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                           name="IdTypWykroczeniaT"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].Columns[WskaznikWykroczeniaT]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WskaznikWykroczeniaT]"
-                          lineageId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].Columns[WskaznikWykroczeniaT]"
-                          name="WskaznikWykroczeniaT"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].Columns[NazwaWykroczenia]"
                           codePage="1250"
                           dataType="str"
@@ -3238,6 +3241,15 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                           lineageId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].Columns[NazwaWykroczenia]"
                           name="NazwaWykroczenia"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].Columns[WskaznikWykroczenia]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WskaznikWykroczenia]"
+                          lineageId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].Columns[WskaznikWykroczenia]"
+                          name="WskaznikWykroczenia"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3246,15 +3258,15 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                           dataType="i4"
                           name="IdTypWykroczeniaT" />
                         <externalMetadataColumn
-                          refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WskaznikWykroczeniaT]"
-                          dataType="i4"
-                          name="WskaznikWykroczeniaT" />
-                        <externalMetadataColumn
                           refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NazwaWykroczenia]"
                           codePage="1250"
                           dataType="str"
                           length="255"
                           name="NazwaWykroczenia" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WskaznikWykroczenia]"
+                          dataType="i4"
+                          name="WskaznikWykroczenia" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -3268,10 +3280,10 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
                           lineageId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdTypWykroczeniaT]"
                           name="IdTypWykroczeniaT" />
                         <outputColumn
-                          refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WskaznikWykroczeniaT]"
+                          refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WskaznikWykroczenia]"
                           dataType="i4"
-                          lineageId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WskaznikWykroczeniaT]"
-                          name="WskaznikWykroczeniaT" />
+                          lineageId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WskaznikWykroczenia]"
+                          name="WskaznikWykroczenia" />
                         <outputColumn
                           refId="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NazwaWykroczenia]"
                           codePage="1250"
@@ -3333,38 +3345,38 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="238.254545454546,41.8909090909091"
+          Size="238,42"
           Id="Package\Data Flow Task fakt przestepstwa"
           TopLeft="718.333352065337,598.866710839522" />
         <NodeLayout
-          Size="240.872727272728,41.8909090909091"
+          Size="241,42"
           Id="Package\Sequence Container\Data Flow Task 1 ladowanie czasu"
           TopLeft="541.800024642798,147.248505816208" />
         <NodeLayout
-          Size="306.327272727273,41.8909090909091"
+          Size="306,42"
           Id="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia"
           TopLeft="81.8000126473621,286.781849441625" />
         <NodeLayout
-          Size="240.872727272728,41.8909090909091"
+          Size="241,42"
           Id="Package\Sequence Container\Data Flow Task 3 ladowanie ofiary"
           TopLeft="547.633358128247,290.248516363996" />
         <NodeLayout
-          Size="250.472727272728,41.8909090909091"
+          Size="250,42"
           Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji"
           TopLeft="111.800013429673,151.581839469171" />
         <NodeLayout
-          Size="288,41.8909090909091"
+          Size="288,42"
           Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni"
           TopLeft="77.6333458720412,40.6484979533119" />
         <NodeLayout
-          Size="281.018181818182,41.8909090909091"
+          Size="281,42"
           Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia"
           TopLeft="514.30002392568,31.1151639167927" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="878.836363636364,386.618181818182"
-          Size="878.836363636364,429.381818181819"
+          PanelSize="879,387"
+          Size="879,430"
           Id="Package\Sequence Container"
           TopLeft="403.333343851071,94.4666736345989" />
         <EdgeLayout
@@ -3398,57 +3410,59 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="206.836363636364,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia"
-          TopLeft="819.000053901228,573.563647288672" />
-        <NodeLayout
-          Size="198.981818181819,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni"
-          TopLeft="811.00005337472,469.672738066136" />
-        <NodeLayout
-          Size="150.109090909091,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\OLE DB Source"
-          TopLeft="844.000055546566,85.0000055941447" />
-        <NodeLayout
-          Size="189.381818181819,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia"
-          TopLeft="821.000054032855,369.781829106854" />
-        <NodeLayout
-          Size="176.29090909091,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja"
-          TopLeft="831.00005469099,283.89092106896" />
-        <NodeLayout
-          Size="171.054545454546,41.8909090909091"
+          Size="171,42"
           Id="Package\Data Flow Task fakt przestepstwa\OLE DB Destination"
           TopLeft="848.000055809819,782.000051466131" />
         <NodeLayout
-          Size="144.872727272728,41.8909090909091"
+          Size="150,42"
+          Id="Package\Data Flow Task fakt przestepstwa\OLE DB Source"
+          TopLeft="844.000055546566,85.0000055941447" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup czas"
+          TopLeft="865.000056928648,673.454556247954" />
+        <NodeLayout
+          Size="145,42"
           Id="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara"
           TopLeft="851.00005600726,188.000012372932" />
         <NodeLayout
-          Size="137.018181818182,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup czas"
-          TopLeft="865.000056928648,673.454556247954" />
+          Size="189,42"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia"
+          TopLeft="821.000054032855,369.781829106854" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja"
+          TopLeft="831.00005469099,283.89092106896" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni"
+          TopLeft="811.00005337472,469.672738066136" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia"
+          TopLeft="819.000053901228,573.563647288672" />
         <EdgeLayout
-          Id="Package\Data Flow Task fakt przestepstwa.Paths[OLE DB Source Output]"
-          TopLeft="921.245510322367,126.890914685054">
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output1]"
+          TopLeft="917.418236180104,325.781830159869">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,61.1090976878778"
+              EndConnector="0,43.9999989469849"
               Start="0,0"
-              End="0,53.6090976878778">
+              End="0,36.4999989469849">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.6090976878778" />
+                    End="0,36.4999989469849" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,12.4453119734924,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3476,86 +3490,48 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output1]"
-          TopLeft="917.418236180104,325.781830159869">
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[OLE DB Source Output]"
+          TopLeft="921.245510322367,126.890914685054">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43.9999989469849"
+              EndConnector="0,61.1090976878778"
               Start="0,0"
-              End="0,36.4999989469849">
+              End="0,53.6090976878778">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.4999989469849" />
+                    End="0,53.6090976878778" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,12.4453119734924,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output2]"
-          TopLeft="913.090962794697,411.672738197763">
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output5]"
+          TopLeft="933.518238187415,715.345465338863">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.999999868373"
+              EndConnector="0,66.6545861272677"
               Start="0,0"
-              End="0,50.499999868373">
+              End="0,59.1545861272677">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.499999868373" />
+                    End="0,59.1545861272677" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,19.4453124341865,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output3]"
-          TopLeft="910.490962465629,511.563647157045">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11.9272732537806,62.0000001316272"
-              Start="0,0"
-              End="11.9272732537806,54.5000001316272">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.0000000658136" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.0000000658136"
-                    Point2="0,31.0000000658136"
-                    Point3="4,31.0000000658136" />
-                  <mssgle:LineSegment
-                    End="7.92727325378064,31.0000000658136" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.92727325378064,31.0000000658136"
-                    Point2="11.9272732537806,31.0000000658136"
-                    Point3="11.9272732537806,35.0000000658136" />
-                  <mssgle:LineSegment
-                    End="11.9272732537806,54.5000001316272" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-42.2277500918597,36.0000000658136,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,23.7726055636339,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3596,26 +3572,62 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output5]"
-          TopLeft="933.518238187415,715.345465338863">
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output3]"
+          TopLeft="910.490962465629,511.563647157045">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,66.6545861272677"
+              EndConnector="11.9272732537806,62.0000001316272"
               Start="0,0"
-              End="0,59.1545861272677">
+              End="11.9272732537806,54.5000001316272">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.1545861272677" />
+                    End="0,27.0000000658136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.0000000658136"
+                    Point2="0,31.0000000658136"
+                    Point3="4,31.0000000658136" />
+                  <mssgle:LineSegment
+                    End="7.92727325378064,31.0000000658136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.92727325378064,31.0000000658136"
+                    Point2="11.9272732537806,31.0000000658136"
+                    Point3="11.9272732537806,35.0000000658136" />
+                  <mssgle:LineSegment
+                    End="11.9272732537806,54.5000001316272" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,23.7726055636339,96.3827734375,11.609375"
+              BoundingBox="-42.2277500918597,36.0000000658136,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output2]"
+          TopLeft="913.090962794697,411.672738197763">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.999999868373"
+              Start="0,0"
+              End="0,50.499999868373">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.499999868373" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.4453124341865,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3623,48 +3635,15 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia">
+    design-time-name="Package\Data Flow Task fakt przestepstwa\OLE DB Destination">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[StatusDochodzenia]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[NarzedzieZbrodni]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3678,6 +3657,52 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup czas">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Czas1]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Ofiara]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3720,7 +3745,7 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3728,20 +3753,7 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task fakt przestepstwa\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara">
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -3751,7 +3763,7 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Ofiara]</Value>
+          type="q3:string">[dbo].[NarzedzieZbrodni]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -3764,7 +3776,7 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup czas">
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -3774,7 +3786,7 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Czas1]</Value>
+          type="q3:string">[dbo].[StatusDochodzenia]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -3792,27 +3804,27 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.109090909091,41.8909090909091"
+          Size="150,42"
           Id="Package\Sequence Container\Data Flow Task 1 ladowanie czasu\OLE DB Source"
           TopLeft="694.000045674546,269.000017703822" />
         <NodeLayout
-          Size="171.054545454546,41.8909090909091"
+          Size="171,44"
           Id="Package\Sequence Container\Data Flow Task 1 ladowanie czasu\OLE DB Destination"
-          TopLeft="682.000044884784,382.000025140744" />
+          TopLeft="682.000044884784,380.000025140744" />
         <EdgeLayout
           Id="Package\Sequence Container\Data Flow Task 1 ladowanie czasu.Paths[OLE DB Source Output]"
-          TopLeft="768.290954370574,310.890926794732">
+          TopLeft="768.250045279665,311.000017703822">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,71.1090983460126"
+              EndConnector="0,69.000007436922"
               Start="0,0"
-              End="0,63.6090983460126">
+              End="0,61.500007436922">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,63.6090983460126" />
+                    End="0,61.500007436922" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3856,11 +3868,11 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.109090909091,41.8909090909091"
+          Size="150,42"
           Id="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia\OLE DB Source"
           TopLeft="550.000036197407,325.000021389377" />
         <NodeLayout
-          Size="171.054545454546,41.8909090909091"
+          Size="171,42"
           Id="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia\OLE DB Destination"
           TopLeft="567.000037316235,444.000029221179" />
         <EdgeLayout
@@ -3932,11 +3944,11 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.109090909091,41.8909090909091"
+          Size="150,42"
           Id="Package\Sequence Container\Data Flow Task 3 ladowanie ofiary\OLE DB Source"
           TopLeft="449.000029550246,239.000015729418" />
         <NodeLayout
-          Size="171.054545454546,41.8909090909091"
+          Size="171,42"
           Id="Package\Sequence Container\Data Flow Task 3 ladowanie ofiary\OLE DB Destination"
           TopLeft="445.000029286992,437.000028760485" />
         <EdgeLayout
@@ -3996,11 +4008,11 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.109090909091,41.8909090909091"
+          Size="150,42"
           Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Source"
           TopLeft="383.33334332953,233.133350529424" />
         <NodeLayout
-          Size="171.054545454546,41.8909090909091"
+          Size="171,42"
           Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Destination"
           TopLeft="380.833343264338,352.73335935121" />
         <EdgeLayout
@@ -4060,11 +4072,11 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.109090909091,41.8909090909091"
+          Size="150,42"
           Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Source"
           TopLeft="741.500046913205,294.533352586728" />
         <NodeLayout
-          Size="171.054545454546,41.8909090909091"
+          Size="171,42"
           Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Destination"
           TopLeft="732.000048175457,426.000028036537" />
         <EdgeLayout
@@ -4124,27 +4136,39 @@ where [refTable].[IdTypWykroczeniaT] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.109090909091,41.8909090909091"
+          Size="150,42"
           Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source"
-          TopLeft="649.00004271294,294.000019349159" />
+          TopLeft="616.00004271294,283.000019349159" />
         <NodeLayout
-          Size="171.054545454546,41.8909090909091"
+          Size="171,42"
           Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination"
-          TopLeft="636.000041857365,409.000026917708" />
+          TopLeft="634.000041857365,409.000026917708" />
         <EdgeLayout
           Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia.Paths[OLE DB Source Output]"
-          TopLeft="722.790951376061,335.890928440068">
+          TopLeft="691.00004271294,325.000019349159">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,73.1090984776395"
+              EndConnector="28.499999144425,84.000007568549"
               Start="0,0"
-              End="0,65.6090984776395">
+              End="28.499999144425,76.500007568549">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.6090984776395" />
+                    End="0,38.0000037842745" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.0000037842745"
+                    Point2="0,42.0000037842745"
+                    Point3="4,42.0000037842745" />
+                  <mssgle:LineSegment
+                    End="24.499999144425,42.0000037842745" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.499999144425,42.0000037842745"
+                    Point2="28.499999144425,42.0000037842745"
+                    Point3="28.499999144425,46.0000037842745" />
+                  <mssgle:LineSegment
+                    End="28.499999144425,76.500007568549" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-IVSSQLK\lolek"
   DTS:DTSID="{301F068F-FACC-4DF4-8CF1-3A1D867C0D91}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
   DTS:LocaleID="1045"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{491044C9-A115-4CA0-9F88-CF3B6CC7829D}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{5BB21B45-C975-4BF9-BB5E-73AD57D5E3B9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -85,7 +85,19 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\kacpe\Downloads\Crime_Data_from_2020_to_Present_Converted_Short.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\kacpe\Downloads\Crime_Data_from_2020_to_Present_Converted_Short.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 4]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{70C0C8FB-DB47-4E16-9A84-FDB0A4183D8F}"
+      DTS:ObjectName="Excel Connection Manager 4">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\lolek\source\repos\IDH\Crime_Data_from_2020_to_Present_Converted_Short.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -308,7 +320,7 @@
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Weapon Desc"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[Weapon Desc]" />
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[Weapon Desc]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -335,7 +347,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[Weapon Desc]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[Weapon Desc]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -446,6 +458,303 @@
               </outputs>
             </component>
             <component
+              refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Crime_Data_from_2020_to_Pre (2)$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 4]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 4]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[Weapon Desc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Weapon Desc]"
+                      length="255"
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[Weapon Desc]"
+                      name="Weapon Desc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[DR_NO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[DR_NO]"
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[DR_NO]"
+                      name="DR_NO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[DR_NO]"
+                      dataType="r8"
+                      name="DR_NO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date Rptd]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date Rptd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[DATE OCC]"
+                      dataType="wstr"
+                      length="255"
+                      name="DATE OCC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[TIME OCC]"
+                      dataType="r8"
+                      name="TIME OCC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[AREA]"
+                      dataType="r8"
+                      name="AREA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[AREA NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="AREA NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rpt Dist No]"
+                      dataType="r8"
+                      name="Rpt Dist No" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[MergeLokalizacja]"
+                      dataType="wstr"
+                      length="255"
+                      name="MergeLokalizacja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Part 1-2]"
+                      dataType="r8"
+                      name="Part 1-2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Crm Cd]"
+                      dataType="r8"
+                      name="Crm Cd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Crm Cd Desc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Crm Cd Desc" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Mocodes]"
+                      dataType="r8"
+                      name="Mocodes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Vict Age]"
+                      dataType="r8"
+                      name="Vict Age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Vict Sex]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vict Sex" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[mergeAgeSex]"
+                      dataType="wstr"
+                      length="255"
+                      name="mergeAgeSex" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Vict Descent]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vict Descent" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Premis Cd]"
+                      dataType="r8"
+                      name="Premis Cd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Premis Desc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Premis Desc" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Weapon Used Cd]"
+                      dataType="r8"
+                      name="Weapon Used Cd" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Weapon Desc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Weapon Desc" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Status Desc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status Desc" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Crm Cd 1]"
+                      dataType="r8"
+                      name="Crm Cd 1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Crm Cd 2]"
+                      dataType="r8"
+                      name="Crm Cd 2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Crm Cd 3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Crm Cd 3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Crm Cd 4]"
+                      dataType="wstr"
+                      length="255"
+                      name="Crm Cd 4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[LOCATION]"
+                      dataType="wstr"
+                      length="255"
+                      name="LOCATION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Cross Street]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cross Street" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[LAT]"
+                      dataType="wstr"
+                      length="255"
+                      name="LAT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[LON]"
+                      dataType="wstr"
+                      length="255"
+                      name="LON" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[MergeStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="MergeStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[IdTypWykroczenia]"
+                      dataType="r8"
+                      name="IdTypWykroczenia" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[IdOfiara]"
+                      dataType="r8"
+                      name="IdOfiara" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[IdStatusDochodzenia]"
+                      dataType="r8"
+                      name="IdStatusDochodzenia" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[IdNarzedzieZbrodni]"
+                      dataType="r8"
+                      name="IdNarzedzieZbrodni" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[IdLokalizacja]"
+                      dataType="r8"
+                      name="IdLokalizacja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Data Poprawna]"
+                      dataType="wstr"
+                      length="255"
+                      name="Data Poprawna" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Data]"
+                      dataType="wstr"
+                      length="255"
+                      name="Data" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[Data2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Data2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[F40]"
+                      dataType="wstr"
+                      length="255"
+                      name="F40" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].ExternalColumns[F41]"
+                      dataType="date"
+                      name="F41" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Error Output].Columns[Weapon Desc]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Error Output].Columns[Weapon Desc]"
+                      name="Weapon Desc" />
+                    <outputColumn
+                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Error Output].Columns[DR_NO]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Error Output].Columns[DR_NO]"
+                      name="DR_NO" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -504,8 +813,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
-                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s29318]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s29318]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1459,7 +1768,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Weapon Desc"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[Weapon Desc]">
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[Weapon Desc]">
                       <properties>
                         <property
                           containsID="true"
@@ -1487,7 +1796,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                       refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Union All.Inputs[Union All Input 1].Columns[DR_NO]"
                       cachedDataType="r8"
                       cachedName="DR_NO"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[DR_NO]">
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[DR_NO]">
                       <properties>
                         <property
                           containsID="true"
@@ -1509,7 +1818,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Weapon Desc"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[Weapon Desc]">
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[Weapon Desc]">
                       <properties>
                         <property
                           containsID="true"
@@ -1537,7 +1846,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                       refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Union All.Inputs[Union All Input 3].Columns[DR_NO]"
                       cachedDataType="r8"
                       cachedName="DR_NO"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[DR_NO]">
+                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output].Columns[DR_NO]">
                       <properties>
                         <property
                           containsID="true"
@@ -1585,244 +1894,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni"
-              componentClassID="Microsoft.ExcelSource"
-              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Excel Source"
-              name="Źródło danych dla wymiaru narzędzia zbrodni"
-              usesDispositions="true"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">'Crime_Data_from_2020_to_Pre (2)$'</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mapping from parameters in the SQL command to variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 3]"
-                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 3]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output]"
-                  name="Excel Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[DR_NO]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[DR_NO]"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[DR_NO]"
-                      name="DR_NO"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[Weapon Desc]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Weapon Desc]"
-                      length="255"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].Columns[Weapon Desc]"
-                      name="Weapon Desc"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[DR_NO]"
-                      dataType="r8"
-                      name="DR_NO" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Date Rptd]"
-                      dataType="wstr"
-                      length="255"
-                      name="Date Rptd" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[DATE OCC]"
-                      dataType="wstr"
-                      length="255"
-                      name="DATE OCC" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[TIME OCC]"
-                      dataType="r8"
-                      name="TIME OCC" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[AREA]"
-                      dataType="r8"
-                      name="AREA" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[AREA NAME]"
-                      dataType="wstr"
-                      length="255"
-                      name="AREA NAME" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Rpt Dist No]"
-                      dataType="r8"
-                      name="Rpt Dist No" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Part 1-2]"
-                      dataType="r8"
-                      name="Part 1-2" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Crm Cd]"
-                      dataType="r8"
-                      name="Crm Cd" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Crm Cd Desc]"
-                      dataType="wstr"
-                      length="255"
-                      name="Crm Cd Desc" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Mocodes]"
-                      dataType="r8"
-                      name="Mocodes" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Vict Age]"
-                      dataType="r8"
-                      name="Vict Age" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Vict Sex]"
-                      dataType="wstr"
-                      length="255"
-                      name="Vict Sex" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Vict Descent]"
-                      dataType="wstr"
-                      length="255"
-                      name="Vict Descent" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Premis Cd]"
-                      dataType="r8"
-                      name="Premis Cd" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Premis Desc]"
-                      dataType="wstr"
-                      length="255"
-                      name="Premis Desc" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Weapon Used Cd]"
-                      dataType="r8"
-                      name="Weapon Used Cd" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Weapon Desc]"
-                      dataType="wstr"
-                      length="255"
-                      name="Weapon Desc" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Status]"
-                      dataType="wstr"
-                      length="255"
-                      name="Status" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Status Desc]"
-                      dataType="wstr"
-                      length="255"
-                      name="Status Desc" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Crm Cd 1]"
-                      dataType="r8"
-                      name="Crm Cd 1" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Crm Cd 2]"
-                      dataType="r8"
-                      name="Crm Cd 2" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Crm Cd 3]"
-                      dataType="wstr"
-                      length="255"
-                      name="Crm Cd 3" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Crm Cd 4]"
-                      dataType="wstr"
-                      length="255"
-                      name="Crm Cd 4" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[LOCATION]"
-                      dataType="wstr"
-                      length="255"
-                      name="LOCATION" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[Cross Street]"
-                      dataType="wstr"
-                      length="255"
-                      name="Cross Street" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[LAT]"
-                      dataType="wstr"
-                      length="255"
-                      name="LAT" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output].ExternalColumns[LON]"
-                      dataType="wstr"
-                      length="255"
-                      name="LON" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Error Output]"
-                  isErrorOut="true"
-                  name="Excel Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                    <outputColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Error Output].Columns[DR_NO]"
-                      dataType="r8"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Error Output].Columns[DR_NO]"
-                      name="DR_NO" />
-                    <outputColumn
-                      refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Error Output].Columns[Weapon Desc]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Error Output].Columns[Weapon Desc]"
-                      name="Weapon Desc" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
@@ -1849,7 +1920,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Excel Source Output]"
               endId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Data Conversion.Inputs[Data Conversion Input]"
               name="Excel Source Output"
-              startId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni.Outputs[Excel Source Output]" />
+              startId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source.Outputs[Excel Source Output]" />
             <path
               refId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Output 0]"
               endId="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\OLE DB Destination.Inputs[OLE DB Destination Input]"
@@ -1882,7 +1953,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{8EC7CA5B-DA7D-4824-B191-0BC7404DC8F8}"
+          SQLTask:Connection="{BBC101B7-958F-41A0-999F-F1C54FCD6570}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE NarzedzieZbrodniSt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1910,11 +1981,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="299.345454545455,41.8909090909091"
+          Size="299,42"
           Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt"
           TopLeft="245.500006258488,188.36668015505" />
         <NodeLayout
-          Size="335.127272727273,41.8909090909091"
+          Size="335,42"
           Id="Package\Execute SQL Task czyszczenie tabeli narzedzie zbrodni"
           TopLeft="227.500005932526,59.800004410893" />
         <EdgeLayout
@@ -1948,83 +2019,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="155.345454545455,41.8909090909091"
-          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Data Conversion"
-          TopLeft="408.000010496007,93.0333397898578" />
+          Size="171,42"
+          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\OLE DB Destination"
+          TopLeft="470.000012256207,655.200048328045" />
         <NodeLayout
-          Size="154.472727272728,41.8909090909091"
-          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Derived Column"
-          TopLeft="175.833337918545,267.80001975313" />
-        <NodeLayout
-          Size="292.363636363637,41.8909090909091"
-          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni"
-          TopLeft="343.500025686499,12.7999995613096" />
-        <NodeLayout
-          Size="121.309090909091,41.8909090909091"
+          Size="121,42"
           Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Union All"
           TopLeft="392.142857977626,374.588235176146" />
         <NodeLayout
-          Size="155.345454545455,41.8909090909091"
+          Size="155,42"
+          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Data Conversion"
+          TopLeft="408.000010496007,93.0333397898578" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Derived Column"
+          TopLeft="175.833337918545,267.80001975313" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Aggregate"
+          TopLeft="396.666677010557,457.242452561636" />
+        <NodeLayout
+          Size="155,42"
           Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Conditional Split"
           TopLeft="414.523820145197,169.86667919616" />
-        <EdgeLayout
-          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Pozostale wiersze]"
-          TopLeft="516.7541231755,211.757588287069">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-45.0718712584801,162.830646889077"
-              Start="0,0"
-              End="-45.0718712584801,155.330646889077">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,77.1296173198245" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,77.1296173198245"
-                    Point2="0,81.1296173198245"
-                    Point3="-4,81.1296173198245" />
-                  <mssgle:LineSegment
-                    End="-41.0718712584801,81.1296173198245" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-41.0718712584801,81.1296173198245"
-                    Point2="-45.0718712584801,81.1296173198245"
-                    Point3="-45.0718712584801,85.1296173198245" />
-                  <mssgle:LineSegment
-                    End="-45.0718712584801,155.330646889077" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-61.67228328549,86.1296173198245,78.2726953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Excel Source Output]"
-          TopLeft="487.550018091253,54.3999995613096">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.6333402285482"
-              Start="0,0"
-              End="0,31.1333402285482">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.1333402285482" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Script Component"
+          TopLeft="429.166677858061,548.600040465149" />
         <EdgeLayout
           Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Derived Column Output]"
           TopLeft="253.069701554909,309.690928844039">
@@ -2117,36 +2138,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="127.418181818182,41.8909090909091"
-          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Aggregate"
-          TopLeft="396.666677010557,457.242452561636" />
-        <EdgeLayout
-          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Union All Output 1]"
-          TopLeft="456.58658567591,416.479144267055">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40.7633082945809"
-              Start="0,0"
-              End="0,33.2633082945809">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.2633082945809" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163.200000000001,41.8909090909091"
-          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Script Component"
-          TopLeft="429.166677858061,548.600040465149" />
         <EdgeLayout
           Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Aggregate Output 1]"
           TopLeft="460.375767919648,499.133361652545">
@@ -2181,10 +2172,64 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171.054545454546,41.8909090909091"
-          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\OLE DB Destination"
-          TopLeft="470.000012256207,655.200048328045" />
+        <EdgeLayout
+          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Union All Output 1]"
+          TopLeft="456.58658567591,416.479144267055">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.7633082945809"
+              Start="0,0"
+              End="0,33.2633082945809">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.2633082945809" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Pozostale wiersze]"
+          TopLeft="516.7541231755,211.757588287069">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-45.0718712584801,162.830646889077"
+              Start="0,0"
+              End="-45.0718712584801,155.330646889077">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.1296173198245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77.1296173198245"
+                    Point2="0,81.1296173198245"
+                    Point3="-4,81.1296173198245" />
+                  <mssgle:LineSegment
+                    End="-41.0718712584801,81.1296173198245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41.0718712584801,81.1296173198245"
+                    Point2="-45.0718712584801,81.1296173198245"
+                    Point3="-45.0718712584801,85.1296173198245" />
+                  <mssgle:LineSegment
+                    End="-45.0718712584801,155.330646889077" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-61.67228328549,86.1296173198245,78.2726953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Output 0]"
           TopLeft="510.766677858061,590.490949556058">
@@ -2219,11 +2264,49 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source"
+          TopLeft="403,4" />
+        <EdgeLayout
+          Id="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt.Paths[Excel Source Output]"
+          TopLeft="472.5,46">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.000010496007,47.0333397898578"
+              Start="0,0"
+              End="13.000010496007,39.5333397898578">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5166698949289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5166698949289"
+                    Point2="0,23.5166698949289"
+                    Point3="4,23.5166698949289" />
+                  <mssgle:LineSegment
+                    End="9.00001049600701,23.5166698949289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.00001049600701,23.5166698949289"
+                    Point2="13.000010496007,23.5166698949289"
+                    Point3="13.000010496007,27.5166698949289" />
+                  <mssgle:LineSegment
+                    End="13.000010496007,39.5333397898578" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Źródło danych dla wymiaru narzędzia zbrodni">
+    design-time-name="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2236,7 +2319,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\OLE DB Destination">
+    design-time-name="Package\Data Flow Task Ładowanie NarzedzieZbrodniSt\Excel Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
