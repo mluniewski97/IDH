@@ -1,3 +1,25 @@
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[NarzedzieZbrodniSt]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[NarzedzieZbrodniSt]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CzasStage]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[CzasStage]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TypWykroczeniaSt]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TypWykroczeniaSt]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[LokalizacjaSt]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[LokalizacjaSt]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[StatusDochodzeniaSt]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[StatusDochodzeniaSt]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[OfiaraSt]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[OfiaraSt]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[PrzestepstwaSt]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[OfiaraSt]
+GO
+
 CREATE TABLE NarzedzieZbrodniSt(
 	IdNarzedzieZbrodniT int NOT NULL PRIMARY KEY,
 	NazwaNarzedzia varchar(255) NOT NULL
@@ -6,26 +28,23 @@ GO
 
 CREATE TABLE TypWykroczeniaSt(
 	IdTypWykroczeniaT int NOT NULL PRIMARY KEY,
-	WskaznikWykroczeniaT int NOT NULL,
+	WskaznikWykroczenia int NOT NULL,
 	NazwaWykroczenia varchar(255) NOT NULL
 )
 GO
 
 CREATE TABLE LokalizacjaSt(
 	IdLokalizacjaT int NOT NULL PRIMARY KEY,
-	KodObszaru int NOT NULL,
 	NazwaObszaru varchar(255) NOT NULL,
 	KodDzielnicy varchar(255) NOT NULL,
-	MiejscePrzestepstwa varchar(255) NOT NULL
 )
 GO
 
-CREATE TABLE CzasSt (
-	IdCzasT int NOT NULL PRIMARY KEY,
-	Data date NOT NULL,
-	Dzien numeric(2) NOT NULL,
-	Miesiac numeric(2) NOT NULL,
-	Rok numeric(4) NOT NULL
+CREATE TABLE CzasStage (
+    Data DATE PRIMARY KEY,
+    Dzien AS DATEPART(day, Data),
+    Miesiac AS DATEPART(month, Data),
+    Rok AS DATEPART(year, Data)
 )
 GO
 
@@ -36,10 +55,159 @@ CREATE TABLE StatusDochodzeniaSt(
 )
 GO
 
+CREATE PROCEDURE WstawCzasStage
+AS
+BEGIN
+    DECLARE @DataStart DATE = '2020-01-01';
+    DECLARE @DataKoniec DATE = '2023-12-31';
+
+    -- Zakładamy, że tabela CzasStage jest pusta na początku tego procesu
+    TRUNCATE TABLE CzasStage;
+
+    WHILE @DataStart <= @DataKoniec
+    BEGIN
+        INSERT INTO CzasStage (Data)
+        VALUES (@DataStart)
+
+        SET @DataStart = DATEADD(day, 1, @DataStart)
+    END
+END
+
 CREATE TABLE OfiaraSt(
-	IdOfiaraT int NOT NULL PRIMARY KEY,,
+	IdOfiaraT int NOT NULL PRIMARY KEY,
 	Wiek int NOT NULL,
 	Plec varchar(255) NOT NULL,
-	EtnicznePochodzenie varchar(255) NOT NULL
 )
+GO
+
+CREATE TABLE PrzestepstwaSt(
+IdPrzestepstwa int NOT NULL,
+IdTypWykroczeniaT int NOT NULL,
+IdOfiaraT int NOT NULL,
+Data date NOT NULL,
+IdNarzedzieZbrodniT int NOT NULL,
+IdLokalizacjaT int NOT NULL,
+IdStatusDochodzeniaT int NOT NULL,
+CONSTRAINT PKK_PrzestepstwaSt PRIMARY KEY
+(
+IdPrzestepstwa,
+IdTypWykroczeniaT,
+IdOfiaraT,
+Data,
+IdNarzedzieZbrodniT,
+IdLokalizacjaT,
+IdStatusDochodzeniaT
+))
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[NarzedzieZbrodni]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[NarzedzieZbrodni]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Czas1]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[Czas1]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TypWykroczenia]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TypWykroczenia]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Lokalizacja]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[Lokalizacja]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[StatusDochodzenia]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[StatusDochodzenia]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Ofiara]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[Ofiara]
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Przestepstwa]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[Przestepstwa]
+GO
+
+CREATE TABLE NarzedzieZbrodni(
+	IdNarzedzieZbrodni int identity(1,1) PRIMARY KEY,
+	IdNarzedzieZbrodniT int NOT NULL,
+	NazwaNarzedzia varchar(255) NOT NULL
+)
+GO
+
+CREATE TABLE TypWykroczenia(
+	 IdTypWykroczenia int identity(1,1) PRIMARY KEY,
+	IdTypWykroczeniaT int NOT NULL,
+	WskaznikWykroczenia int NOT NULL,
+	NazwaWykroczenia varchar(255) NOT NULL
+)
+GO
+
+CREATE TABLE Lokalizacja(
+	 IdLokalizacja int identity(1,1) PRIMARY KEY,
+	IdLokalizacjaT int NOT NULL,
+	NazwaObszaru varchar(255) NOT NULL,
+	KodDzielnicy varchar(255) NOT NULL,
+)
+GO
+
+CREATE TABLE Czas1 (
+    IdCzasu int identity(1,1) PRIMARY KEY,
+    Data DATE,
+    Dzien AS DATEPART(day, Data),
+    Miesiac AS DATEPART(month, Data),
+    Rok AS DATEPART(year, Data)
+)
+GO
+
+CREATE TABLE StatusDochodzenia(
+	IdStatusDochodzenia int identity(1,1) PRIMARY KEY,
+	IdStatusDochodzeniaT int NOT NULL,
+	KodStatusu varchar(255) NOT NULL,
+	Status varchar(255) NOT NULL
+)
+GO
+
+CREATE TABLE Ofiara(
+	IdOfiara int identity(1,1) PRIMARY KEY,
+	IdOfiaraT int NOT NULL,
+	Wiek int NOT NULL,
+	Plec varchar(255) NOT NULL,
+)
+GO
+
+CREATE TABLE Przestepstwa(
+IdPrzestepstwa int NOT NULL,
+IdTypWykroczenia int NOT NULL,
+IdOfiara int NOT NULL,
+IdCzasu int NOT NULL,
+IdNarzedzieZbrodni int NOT NULL,
+IdLokalizacja int NOT NULL,
+IdStatusDochodzenia int NOT NULL,
+PRIMARY KEY(IdPrzestepstwa, IdTypWykroczenia, IdOfiara, IdCzasu, IdNarzedzieZbrodni,IdLokalizacja,IdStatusDochodzenia)
+)
+GO
+
+ALTER TABLE Przestepstwa
+ADD CONSTRAINT fk_typwykroczenia
+FOREIGN KEY(IdTypWykroczenia) REFERENCES TypWykroczenia
+GO
+
+ALTER TABLE Przestepstwa
+ADD CONSTRAINT fk_ofiara
+FOREIGN KEY(IdOfiara) REFERENCES Ofiara
+GO
+
+ALTER TABLE Przestepstwa
+ADD CONSTRAINT fk_narzedziezbrodni
+FOREIGN KEY(IdNarzedzieZbrodni) REFERENCES NarzedzieZbrodni
+GO
+
+ALTER TABLE Przestepstwa
+ADD CONSTRAINT fk_czas2
+FOREIGN KEY(IdCzasu) REFERENCES Czas1
+GO
+
+ALTER TABLE Przestepstwa
+ADD CONSTRAINT fk_lokalizacja
+FOREIGN KEY(IdLokalizacja) REFERENCES Lokalizacja
+GO
+
+ALTER TABLE Przestepstwa
+ADD CONSTRAINT fk_statusdochodzenia
+FOREIGN KEY(IdStatusDochodzenia) REFERENCES StatusDochodzenia
 GO
