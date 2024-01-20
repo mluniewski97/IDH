@@ -81,14 +81,16 @@ CREATE TABLE OfiaraSt(
 GO
 
 CREATE TABLE PrzestepstwaSt(
+IdPrzestepstwa int NOT NULL,
 IdTypWykroczeniaT int NOT NULL,
 IdOfiaraT int NOT NULL,
 Data date NOT NULL,
 IdNarzedzieZbrodniT int NOT NULL,
 IdLokalizacjaT int NOT NULL,
 IdStatusDochodzeniaT int NOT NULL,
-CONSTRAINT PK_PrzestepstwaSt PRIMARY KEY
+CONSTRAINT PKK_PrzestepstwaSt PRIMARY KEY
 (
+IdPrzestepstwa,
 IdTypWykroczeniaT,
 IdOfiaraT,
 Data,
@@ -169,13 +171,14 @@ CREATE TABLE Ofiara(
 GO
 
 CREATE TABLE Przestepstwa(
+IdPrzestepstwa int NOT NULL,
 IdTypWykroczenia int NOT NULL,
 IdOfiara int NOT NULL,
 IdCzasu int NOT NULL,
 IdNarzedzieZbrodni int NOT NULL,
 IdLokalizacja int NOT NULL,
 IdStatusDochodzenia int NOT NULL,
-PRIMARY KEY(IdTypWykroczenia, IdOfiara, IdCzasu, IdNarzedzieZbrodni,IdLokalizacja,IdStatusDochodzenia)
+PRIMARY KEY(IdPrzestepstwa, IdTypWykroczenia, IdOfiara, IdCzasu, IdNarzedzieZbrodni,IdLokalizacja,IdStatusDochodzenia)
 )
 GO
 

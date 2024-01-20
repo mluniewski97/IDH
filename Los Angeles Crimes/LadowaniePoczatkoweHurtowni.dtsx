@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{1B4901C9-D761-412C-AC35-4524E387EFB4}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{11B68FA0-7522-49BD-88B7-B3EE62A85CFC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -46,11 +46,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task fakt przestepstwa\Lookup"
+              refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup"
+              name="Lookup 1 Lokalizacja"
               usesDispositions="true"
               version="6">
               <properties>
@@ -59,13 +59,14 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Lokalizacja]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Lokalizacja]) [refTable]
+where [refTable].[IdLokalizacjaT] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -96,12 +97,12 @@
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml"></property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IdLokalizacja" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IdLokalizacjaT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NazwaObszaru" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="KodDzielnicy" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1250"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap"></property>
+                  name="ParameterMap">#{Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdLokalizacjaT]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -113,52 +114,88 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup.Inputs[Lookup Input]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Inputs[Lookup Input]"
                   name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Inputs[Lookup Input].Columns[IdLokalizacjaT]"
+                      cachedDataType="i4"
+                      cachedName="IdLokalizacjaT"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdLokalizacjaT]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IdLokalizacjaT</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Match Output].Columns[IdLokalizacja]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Match Output].Columns[IdLokalizacja]"
+                      name="IdLokalizacja"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">IdLokalizacja</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -167,11 +204,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task fakt przestepstwa\Lookup 1"
+              refId="Package\Data Flow Task fakt przestepstwa\Lookup czas"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup 1"
+              name="Lookup czas"
               usesDispositions="true"
               version="6">
               <properties>
@@ -180,13 +217,14 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Czas1]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Czas1]) [refTable]
+where [refTable].[Data] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -217,12 +255,12 @@
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml"></property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IdCzasu" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Data" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Dzien" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Miesiac" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Rok" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap"></property>
+                  name="ParameterMap">#{Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[Data]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -234,52 +272,88 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Inputs[Lookup Input]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Inputs[Lookup Input]"
                   name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Inputs[Lookup Input].Columns[Data]"
+                      cachedDataType="dbDate"
+                      cachedName="Data"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[Data]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Data</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Outputs[Lookup Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Match Output].Columns[IdCzasu]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Match Output].Columns[IdCzasu]"
+                      name="IdCzasu"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">IdCzasu</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Outputs[Lookup No Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Outputs[Lookup Error Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -288,11 +362,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task fakt przestepstwa\Lookup 2"
+              refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup 2"
+              name="Lookup narzedzie zbrodni"
               usesDispositions="true"
               version="6">
               <properties>
@@ -301,13 +375,14 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[NarzedzieZbrodni]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[NarzedzieZbrodni]) [refTable]
+where [refTable].[IdNarzedzieZbrodniT] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -338,12 +413,12 @@
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml"></property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IdNarzedzieZbrodni" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IdNarzedzieZbrodniT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NazwaNarzedzia" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1250"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap"></property>
+                  name="ParameterMap">#{Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdNarzedzieZbrodniT]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -355,52 +430,88 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Inputs[Lookup Input]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Inputs[Lookup Input]"
                   name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Inputs[Lookup Input].Columns[IdNarzedzieZbrodniT]"
+                      cachedDataType="i4"
+                      cachedName="IdNarzedzieZbrodniT"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdNarzedzieZbrodniT]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IdNarzedzieZbrodniT</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Outputs[Lookup Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Match Output].Columns[IdNarzedzieZbrodni]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Match Output].Columns[IdNarzedzieZbrodni]"
+                      name="IdNarzedzieZbrodni"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">IdNarzedzieZbrodni</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Outputs[Lookup No Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Outputs[Lookup Error Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -409,11 +520,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task fakt przestepstwa\Lookup 3"
+              refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup 3"
+              name="Lookup Ofiara"
               usesDispositions="true"
               version="6">
               <properties>
@@ -422,13 +533,14 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Ofiara]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Ofiara]) [refTable]
+where [refTable].[IdOfiaraT] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -459,12 +571,12 @@
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml"></property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IdOfiara" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IdOfiaraT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Wiek" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Plec" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1250"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap"></property>
+                  name="ParameterMap">#{Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdOfiaraT]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -476,52 +588,88 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Inputs[Lookup Input]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Inputs[Lookup Input]"
                   name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Inputs[Lookup Input].Columns[IdOfiaraT]"
+                      cachedDataType="i4"
+                      cachedName="IdOfiaraT"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdOfiaraT]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IdOfiaraT</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Outputs[Lookup Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Match Output].Columns[IdOfiara]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Match Output].Columns[IdOfiara]"
+                      name="IdOfiara"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">IdOfiara</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Outputs[Lookup No Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Outputs[Lookup Error Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -530,11 +678,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task fakt przestepstwa\Lookup 4"
+              refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup 4"
+              name="Lookup status dochodzenia"
               usesDispositions="true"
               version="6">
               <properties>
@@ -543,13 +691,14 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[StatusDochodzenia]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[StatusDochodzenia]) [refTable]
+where [refTable].[IdStatusDochodzeniaT] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -580,12 +729,12 @@
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml"></property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IdStatusDochodzenia" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IdStatusDochodzeniaT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="KodStatusu" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Status" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1250"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap"></property>
+                  name="ParameterMap">#{Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdStatusDochodzeniaT]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -597,52 +746,88 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Inputs[Lookup Input]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Inputs[Lookup Input]"
                   name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Inputs[Lookup Input].Columns[IdStatusDochodzeniaT]"
+                      cachedDataType="i4"
+                      cachedName="IdStatusDochodzeniaT"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdStatusDochodzeniaT]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IdStatusDochodzeniaT</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Outputs[Lookup Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Match Output].Columns[IdStatusDochodzenia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Match Output].Columns[IdStatusDochodzenia]"
+                      name="IdStatusDochodzenia"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">IdStatusDochodzenia</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Outputs[Lookup No Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Outputs[Lookup Error Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 4.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -651,11 +836,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task fakt przestepstwa\Lookup 5"
+              refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup 5"
+              name="Lookup typwykroczenia"
               usesDispositions="true"
               version="6">
               <properties>
@@ -664,13 +849,14 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[TypWykroczenia]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[TypWykroczenia]) [refTable]
+where [refTable].[IdTypWykroczeniaT] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -701,12 +887,12 @@
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml"></property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IdTypWykroczenia" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IdTypWykroczeniaT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WskaznikWykroczenia" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NazwaWykroczenia" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1250"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap"></property>
+                  name="ParameterMap">#{Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdTypWykroczeniaT]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -718,52 +904,88 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Inputs[Lookup Input]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Inputs[Lookup Input]"
                   name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Inputs[Lookup Input].Columns[IdTypWykroczeniaT]"
+                      cachedDataType="i4"
+                      cachedName="IdTypWykroczeniaT"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdTypWykroczeniaT]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">IdTypWykroczeniaT</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Outputs[Lookup Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Match Output].Columns[IdTypWykroczenia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Match Output].Columns[IdTypWykroczenia]"
+                      name="IdTypWykroczenia"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">IdTypWykroczenia</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Outputs[Lookup No Match Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Outputs[Lookup Error Output]"
+                  refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 5.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -787,7 +1009,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[dbo].[Przestepstwa]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -809,7 +1031,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -821,7 +1043,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -830,6 +1052,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -840,8 +1064,81 @@
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdPrzestepstwa]"
+                      cachedDataType="i4"
+                      cachedName="IdPrzestepstwa"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdPrzestepstwa]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdPrzestepstwa]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdOfiara]"
+                      cachedDataType="i4"
+                      cachedName="IdOfiara"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdOfiara]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Match Output].Columns[IdOfiara]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdLokalizacja]"
+                      cachedDataType="i4"
+                      cachedName="IdLokalizacja"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdLokalizacja]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Match Output].Columns[IdLokalizacja]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdTypWykroczenia]"
+                      cachedDataType="i4"
+                      cachedName="IdTypWykroczenia"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdTypWykroczenia]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Match Output].Columns[IdTypWykroczenia]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdNarzedzieZbrodni]"
+                      cachedDataType="i4"
+                      cachedName="IdNarzedzieZbrodni"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdNarzedzieZbrodni]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Match Output].Columns[IdNarzedzieZbrodni]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdStatusDochodzenia]"
+                      cachedDataType="i4"
+                      cachedName="IdStatusDochodzenia"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdStatusDochodzenia]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Match Output].Columns[IdStatusDochodzenia]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdCzasu]"
+                      cachedDataType="i4"
+                      cachedName="IdCzasu"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdCzasu]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Match Output].Columns[IdCzasu]" />
+                  </inputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdPrzestepstwa]"
+                      dataType="i4"
+                      name="IdPrzestepstwa" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdTypWykroczenia]"
+                      dataType="i4"
+                      name="IdTypWykroczenia" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdOfiara]"
+                      dataType="i4"
+                      name="IdOfiara" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdCzasu]"
+                      dataType="i4"
+                      name="IdCzasu" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdNarzedzieZbrodni]"
+                      dataType="i4"
+                      name="IdNarzedzieZbrodni" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdLokalizacja]"
+                      dataType="i4"
+                      name="IdLokalizacja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdStatusDochodzenia]"
+                      dataType="i4"
+                      name="IdStatusDochodzenia" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
@@ -885,7 +1182,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[dbo].[PrzestepstwaSt]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -920,6 +1217,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[db-mssql.s28646]"
+                  connectionManagerRefId="Package.ConnectionManagers[db-mssql.s28646]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -927,14 +1226,143 @@
                 <output
                   refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdPrzestepstwa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdPrzestepstwa]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdPrzestepstwa]"
+                      name="IdPrzestepstwa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdTypWykroczeniaT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdTypWykroczeniaT]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdTypWykroczeniaT]"
+                      name="IdTypWykroczeniaT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdOfiaraT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdOfiaraT]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdOfiaraT]"
+                      name="IdOfiaraT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[Data]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Data]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[Data]"
+                      name="Data"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdNarzedzieZbrodniT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdNarzedzieZbrodniT]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdNarzedzieZbrodniT]"
+                      name="IdNarzedzieZbrodniT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdLokalizacjaT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdLokalizacjaT]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdLokalizacjaT]"
+                      name="IdLokalizacjaT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdStatusDochodzeniaT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdStatusDochodzeniaT]"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].Columns[IdStatusDochodzeniaT]"
+                      name="IdStatusDochodzeniaT"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdPrzestepstwa]"
+                      dataType="i4"
+                      name="IdPrzestepstwa" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdTypWykroczeniaT]"
+                      dataType="i4"
+                      name="IdTypWykroczeniaT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdOfiaraT]"
+                      dataType="i4"
+                      name="IdOfiaraT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Data]"
+                      dataType="dbDate"
+                      name="Data" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdNarzedzieZbrodniT]"
+                      dataType="i4"
+                      name="IdNarzedzieZbrodniT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdLokalizacjaT]"
+                      dataType="i4"
+                      name="IdLokalizacjaT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IdStatusDochodzeniaT]"
+                      dataType="i4"
+                      name="IdStatusDochodzeniaT" />
+                  </externalMetadataColumns>
                 </output>
                 <output
                   refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdPrzestepstwa]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdPrzestepstwa]"
+                      name="IdPrzestepstwa" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdTypWykroczeniaT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdTypWykroczeniaT]"
+                      name="IdTypWykroczeniaT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdOfiaraT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdOfiaraT]"
+                      name="IdOfiaraT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Data]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Data]"
+                      name="Data" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdNarzedzieZbrodniT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdNarzedzieZbrodniT]"
+                      name="IdNarzedzieZbrodniT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdLokalizacjaT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdLokalizacjaT]"
+                      name="IdLokalizacjaT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdStatusDochodzeniaT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IdStatusDochodzeniaT]"
+                      name="IdStatusDochodzeniaT" />
                     <outputColumn
                       refId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -953,6 +1381,43 @@
               </outputs>
             </component>
           </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output1]"
+              endId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output2]"
+              endId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output3]"
+              endId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output4]"
+              endId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output5]"
+              endId="Package\Data Flow Task fakt przestepstwa\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task fakt przestepstwa\Lookup czas.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task fakt przestepstwa.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task fakt przestepstwa\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2868,17 +3333,9 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="288,41.8909090909091"
-          Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni"
-          TopLeft="77.6333458720412,40.6484979533119" />
-        <NodeLayout
-          Size="281.018181818182,41.8909090909091"
-          Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia"
-          TopLeft="514.30002392568,31.1151639167927" />
-        <NodeLayout
-          Size="250.472727272728,41.8909090909091"
-          Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji"
-          TopLeft="111.800013429673,151.581839469171" />
+          Size="238.254545454546,41.8909090909091"
+          Id="Package\Data Flow Task fakt przestepstwa"
+          TopLeft="718.333352065337,598.866710839522" />
         <NodeLayout
           Size="240.872727272728,41.8909090909091"
           Id="Package\Sequence Container\Data Flow Task 1 ladowanie czasu"
@@ -2891,6 +3348,18 @@
           Size="240.872727272728,41.8909090909091"
           Id="Package\Sequence Container\Data Flow Task 3 ladowanie ofiary"
           TopLeft="547.633358128247,290.248516363996" />
+        <NodeLayout
+          Size="250.472727272728,41.8909090909091"
+          Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji"
+          TopLeft="111.800013429673,151.581839469171" />
+        <NodeLayout
+          Size="288,41.8909090909091"
+          Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni"
+          TopLeft="77.6333458720412,40.6484979533119" />
+        <NodeLayout
+          Size="281.018181818182,41.8909090909091"
+          Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia"
+          TopLeft="514.30002392568,31.1151639167927" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -2898,10 +3367,6 @@
           Size="878.836363636364,429.381818181819"
           Id="Package\Sequence Container"
           TopLeft="403.333343851071,94.4666736345989" />
-        <NodeLayout
-          Size="238.254545454546,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa"
-          TopLeft="718.333352065337,598.866710839522" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="840.106075230932,523.848491816417">
@@ -2928,131 +3393,399 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni">
+    design-time-name="Package\Data Flow Task fakt przestepstwa">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="206.836363636364,41.8909090909091"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia"
+          TopLeft="819.000053901228,573.563647288672" />
+        <NodeLayout
+          Size="198.981818181819,41.8909090909091"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni"
+          TopLeft="811.00005337472,469.672738066136" />
         <NodeLayout
           Size="150.109090909091,41.8909090909091"
-          Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Source"
-          TopLeft="694.000045674546,311.000020467988" />
+          Id="Package\Data Flow Task fakt przestepstwa\OLE DB Source"
+          TopLeft="844.000055546566,85.0000055941447" />
+        <NodeLayout
+          Size="189.381818181819,41.8909090909091"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia"
+          TopLeft="821.000054032855,369.781829106854" />
+        <NodeLayout
+          Size="176.29090909091,41.8909090909091"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja"
+          TopLeft="831.00005469099,283.89092106896" />
         <NodeLayout
           Size="171.054545454546,41.8909090909091"
-          Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Destination"
-          TopLeft="732.000048175457,426.000028036537" />
+          Id="Package\Data Flow Task fakt przestepstwa\OLE DB Destination"
+          TopLeft="848.000055809819,782.000051466131" />
+        <NodeLayout
+          Size="144.872727272728,41.8909090909091"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara"
+          TopLeft="851.00005600726,188.000012372932" />
+        <NodeLayout
+          Size="137.018181818182,41.8909090909091"
+          Id="Package\Data Flow Task fakt przestepstwa\Lookup czas"
+          TopLeft="865.000056928648,673.454556247954" />
         <EdgeLayout
-          Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni.Paths[OLE DB Source Output]"
-          TopLeft="769.054591129091,352.890929558897">
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[OLE DB Source Output]"
+          TopLeft="921.245510322367,126.890914685054">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="48.472729773639,73.1090984776396"
+              EndConnector="0,61.1090976878778"
               Start="0,0"
-              End="48.472729773639,65.6090984776396">
+              End="0,53.6090976878778">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5545492388198" />
+                    End="0,53.6090976878778" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output]"
+          TopLeft="921.290964440034,229.890921463841">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.9999996051189"
+              Start="0,0"
+              End="0,46.4999996051189">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.4999996051189" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,17.4453123025594,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output1]"
+          TopLeft="917.418236180104,325.781830159869">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.9999989469849"
+              Start="0,0"
+              End="0,36.4999989469849">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.4999989469849" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,12.4453119734924,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output2]"
+          TopLeft="913.090962794697,411.672738197763">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.999999868373"
+              Start="0,0"
+              End="0,50.499999868373">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.499999868373" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.4453124341865,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output3]"
+          TopLeft="910.490962465629,511.563647157045">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.9272732537806,62.0000001316272"
+              Start="0,0"
+              End="11.9272732537806,54.5000001316272">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.0000000658136" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,32.5545492388198"
-                    Point2="0,36.5545492388198"
-                    Point3="4,36.5545492388198" />
+                    Point1="0,27.0000000658136"
+                    Point2="0,31.0000000658136"
+                    Point3="4,31.0000000658136" />
                   <mssgle:LineSegment
-                    End="44.472729773639,36.5545492388198" />
+                    End="7.92727325378064,31.0000000658136" />
                   <mssgle:CubicBezierSegment
-                    Point1="44.472729773639,36.5545492388198"
-                    Point2="48.472729773639,36.5545492388198"
-                    Point3="48.472729773639,40.5545492388198" />
+                    Point1="7.92727325378064,31.0000000658136"
+                    Point2="11.9272732537806,31.0000000658136"
+                    Point3="11.9272732537806,35.0000000658136" />
                   <mssgle:LineSegment
-                    End="48.472729773639,65.6090984776396" />
+                    End="11.9272732537806,54.5000001316272" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-42.2277500918597,36.0000000658136,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150.109090909091,41.8909090909091"
-          Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source"
-          TopLeft="649.00004271294,294.000019349159" />
-        <NodeLayout
-          Size="171.054545454546,41.8909090909091"
-          Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination"
-          TopLeft="636.000041857365,409.000026917708" />
         <EdgeLayout
-          Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia.Paths[OLE DB Source Output]"
-          TopLeft="722.790951376061,335.890928440068">
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output4]"
+          TopLeft="922.41823571941,615.454556379581">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,73.1090984776395"
+              EndConnector="11.0909121183287,57.9999998683732"
               Start="0,0"
-              End="0,65.6090984776395">
+              End="11.0909121183287,50.4999998683732">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.6090984776395" />
+                    End="0,24.9999999341866" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.9999999341866"
+                    Point2="0,28.9999999341866"
+                    Point3="4,28.9999999341866" />
+                  <mssgle:LineSegment
+                    End="7.09091211832867,28.9999999341866" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.09091211832867,28.9999999341866"
+                    Point2="11.0909121183287,28.9999999341866"
+                    Point3="11.0909121183287,32.9999999341866" />
+                  <mssgle:LineSegment
+                    End="11.0909121183287,50.4999998683732" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-42.6459306595857,33.9999999341866,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Sequence Container\Data Flow Task ladowanie lokalizacji">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150.109090909091,41.8909090909091"
-          Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Source"
-          TopLeft="383.33334332953,233.133350529424" />
-        <NodeLayout
-          Size="171.054545454546,41.8909090909091"
-          Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Destination"
-          TopLeft="380.833343264338,352.73335935121" />
         <EdgeLayout
-          Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji.Paths[OLE DB Source Output]"
-          TopLeft="462.374252387843,275.024259620333">
+          Id="Package\Data Flow Task fakt przestepstwa.Paths[Lookup Match Output5]"
+          TopLeft="933.518238187415,715.345465338863">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,77.709099730877"
+              EndConnector="0,66.6545861272677"
               Start="0,0"
-              End="0,70.209099730877">
+              End="0,59.1545861272677">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.209099730877" />
+                    End="0,59.1545861272677" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,23.7726055636339,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup status dochodzenia">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[StatusDochodzenia]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup narzedzie zbrodni">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[NarzedzieZbrodni]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup typwykroczenia">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[TypWykroczenia]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup 1 Lokalizacja">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Lokalizacja]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup Ofiara">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Ofiara]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task fakt przestepstwa\Lookup czas">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Czas1]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Sequence Container\Data Flow Task 1 ladowanie czasu">
     <LayoutInfo>
@@ -3091,6 +3824,32 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task 1 ladowanie czasu\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task 1 ladowanie czasu\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia">
     <LayoutInfo>
@@ -3141,6 +3900,32 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Sequence Container\Data Flow Task 3 ladowanie ofiary">
     <LayoutInfo>
@@ -3179,165 +3964,8 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <TaskHost
-    design-time-name="Package\Data Flow Task fakt przestepstwa">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="150.109090909091,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\OLE DB Source"
-          TopLeft="767.000050478929,2.1316282072803E-14" />
-        <NodeLayout
-          Size="171.054545454546,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\OLE DB Destination"
-          TopLeft="771.000050742182,697.000045871986" />
-        <NodeLayout
-          Size="113.454545454546,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup"
-          TopLeft="797.000052453333,103.000006778787" />
-        <NodeLayout
-          Size="113.454545454546,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup 1"
-          TopLeft="796.000052387519,185.89091461924" />
-        <NodeLayout
-          Size="113.454545454546,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup 2"
-          TopLeft="799.000052584959,284.781823512709" />
-        <NodeLayout
-          Size="113.454545454546,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup 3"
-          TopLeft="799.000052584959,386.672732603618" />
-        <NodeLayout
-          Size="113.454545454546,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup 4"
-          TopLeft="799.000052584959,488.563641694527" />
-        <NodeLayout
-          Size="113.454545454546,41.8909090909091"
-          Id="Package\Data Flow Task fakt przestepstwa\Lookup 5"
-          TopLeft="799.000052584959,590.454550785436" />
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task 1 ladowanie czasu\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task 1 ladowanie czasu\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task 2 ladowanie statusu dochodenia\OLE DB Destination">
+    design-time-name="Package\Sequence Container\Data Flow Task 3 ladowanie ofiary\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3362,8 +3990,187 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Data Flow Task ladowanie lokalizacji">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.109090909091,41.8909090909091"
+          Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Source"
+          TopLeft="383.33334332953,233.133350529424" />
+        <NodeLayout
+          Size="171.054545454546,41.8909090909091"
+          Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Destination"
+          TopLeft="380.833343264338,352.73335935121" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Data Flow Task ladowanie lokalizacji.Paths[OLE DB Source Output]"
+          TopLeft="462.374252387843,275.024259620333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.709099730877"
+              Start="0,0"
+              End="0,70.209099730877">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.209099730877" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Data Flow Task 3 ladowanie ofiary\OLE DB Destination">
+    design-time-name="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task ladowanie lokalizacji\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.109090909091,41.8909090909091"
+          Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Source"
+          TopLeft="741.500046913205,294.533352586728" />
+        <NodeLayout
+          Size="171.054545454546,41.8909090909091"
+          Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Destination"
+          TopLeft="732.000048175457,426.000028036537" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni.Paths[OLE DB Source Output]"
+          TopLeft="817.04095663524,336.424261677637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.5757663589002"
+              Start="0,0"
+              End="0,82.0757663589002">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.0757663589002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task ladowanie narzedzia zbrodni\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.109090909091,41.8909090909091"
+          Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source"
+          TopLeft="649.00004271294,294.000019349159" />
+        <NodeLayout
+          Size="171.054545454546,41.8909090909091"
+          Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination"
+          TopLeft="636.000041857365,409.000026917708" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia.Paths[OLE DB Source Output]"
+          TopLeft="722.790951376061,335.890928440068">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73.1090984776395"
+              Start="0,0"
+              End="0,65.6090984776395">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.6090984776395" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Data Flow Task ladowanie typ wykroczenia\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

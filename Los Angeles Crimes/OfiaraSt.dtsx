@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="OfiaraSt"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{0A3A70A5-46E2-47C9-88AD-04452F614B5F}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{4933F94A-F724-4D1D-89A4-E3472A048630}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -37,7 +37,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\kacpe\Downloads\Crime_Data_from_2020_to_Present_Converted_Short.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\kacpe\Downloads\Crime_Data_from_2020_to_Present_Converted_Short.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -49,7 +49,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\kacpe\Downloads\Crime_Data_from_2020_to_Present_Converted_Short.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\kacpe\Downloads\Crime_Data_from_2020_to_Present_Converted_Short.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -99,6 +99,53 @@
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2123ABB7-125D-4D6E-AF85-EA74BDED4EB2}"
+      DTS:ObjectName="Flat File Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1045"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1250"
+          DTS:ConnectionString="C:\Users\kacpe\OneDrive\Documents\GitHub\IDH\VictData.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Id"
+              DTS:DTSID="{9BCA4D0C-040A-4BD8-B2E1-D4E9515C42D9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Age"
+              DTS:DTSID="{71B1CCCC-72E1-49B2-A91D-712D1A2BA4A3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Sex"
+              DTS:DTSID="{6133B633-0D3E-4D0D-B05E-BC03E19DA201}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
@@ -138,8 +185,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task załaduj tabelę ofiara st\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 1]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -458,13 +505,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="278.400000000001,41.8909090909091"
-          Id="Package\Execute SQL Task wyczyść tabelę ofiara st"
-          TopLeft="422.500011017547,78.0000057533387" />
-        <NodeLayout
           Size="262.69090909091,41.8909090909091"
           Id="Package\Data Flow Task załaduj tabelę ofiara st"
           TopLeft="430.000011213125,203.666681689273" />
+        <NodeLayout
+          Size="278.400000000001,41.8909090909091"
+          Id="Package\Execute SQL Task wyczyść tabelę ofiara st"
+          TopLeft="422.500011017547,78.0000057533387" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="561.522738388064,119.890914844248">
@@ -496,13 +543,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.981818181819,41.8909090909091"
-          Id="Package\Data Flow Task załaduj tabelę ofiara st\Flat File Source"
-          TopLeft="505.833346523967,182.86668015505" />
-        <NodeLayout
           Size="171.054545454546,41.8909090909091"
           Id="Package\Data Flow Task załaduj tabelę ofiara st\OLE DB Destination"
           TopLeft="499.166679683453,372.666694154841" />
+        <NodeLayout
+          Size="150.981818181819,41.8909090909091"
+          Id="Package\Data Flow Task załaduj tabelę ofiara st\Flat File Source"
+          TopLeft="505.833346523967,182.86668015505" />
         <EdgeLayout
           Id="Package\Data Flow Task załaduj tabelę ofiara st.Paths[Flat File Source Output]"
           TopLeft="583.009104012801,224.757589245959">
